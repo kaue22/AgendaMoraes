@@ -3,11 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>Dashboard</h1>
+<h1>AGENDA MORAES</h1>
+
+<h1>Cadastrar novo evento na agenda <a href="{{ route('admin.pages.create') }}" class="btn btn-dark">Add</a></h1>
 @stop
 
 @section('content')
-<p>Welcome to this beautiful admin panel.</p>
+
 @stop
 
 @section('css')

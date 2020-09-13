@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('admin.pages.home');
+Route::get('/home/create','HomeController@create')->name('admin.pages.create');
+Route::post('/home/cadastra', 'HomeController@cadastra')->name('admin.pages.cadastra');
