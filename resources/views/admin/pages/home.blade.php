@@ -10,7 +10,7 @@
 
 @section('content')
 <body>
-        Ola,<p>{{ $users->name }}</p>
+        Ola,<p></p>
         Bem vindo a sua Agenda! <br/>###AQUI RETORNAR O NUMERO DE LISTAS NA AGENDA### <br/>
 
 

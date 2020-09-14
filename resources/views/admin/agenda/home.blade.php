@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Planos')
 
 @section('content_header')
 <h1>AGENDA MORAES</h1>
@@ -9,15 +9,56 @@
 @stop
 
 @section('content')
-    
-@stop
+    <div class='card'>
 
-@section('css')
-<link rel="stylesheet" href="/css/admin_custom.css">
-@stop
+        <div class="card-header">
+           
+                @csrf
+                <input type="text" name="filter" placeholder="nome" class="form-control" value={{ $filters['filter'] ?? '' }}>
+                <button type="submit" class="btn btn-dark">Filtrar</button>
 
-@section('js')
-<script>
-    console.log('Hi!');
-</script>
+            </form>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Estado</th>
+                        <th>Cidade</th>
+                        <th>Informação</th>
+                        <th>categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($mostra as $agenda)
+                        <tr>
+                            <td>
+                                {{ $agenda->name }}
+                            </td>
+                            <td>
+                                {{ $agenda->phone }}
+                            </td>
+                            <td>
+                                {{ $agenda->estado }}
+                            </td>
+                            <td>
+                                {{ $agenda->cidade }}
+                            </td>
+                            <td>
+                                {{ $agenda->info }}
+                            </td>
+                            <td>
+                                {{ $agenda->categoria }}
+                            </td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+     
+    </div>
 @stop
