@@ -32,7 +32,7 @@ class AgendaController extends Controller
         // dd($this->repository->name);
         //$user_id = Agenda::where('user_id', $idAuth);
 
-        $user_id = DB::select('select * from agendas where user_id = ?', [$idAuth]);
+        $user_id = DB::select('select user_id from agendas where user_id = ?', [$idAuth]);
         //dd(Auth::user()->id);
 
         dd($user_id);
