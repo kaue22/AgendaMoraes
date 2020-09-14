@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+//Home
 Route::get('/home', 'HomeController@index')->name('admin.pages.home');
-Route::get('/home/create','HomeController@create')->name('admin.pages.create');
-Route::post('/home/cadastra', 'HomeController@cadastra')->name('admin.pages.cadastra');
+//Agenda
+Route::get('/agenda', 'AgendaController@index')->name('admin.agenda.home');
+Route::get('/agenda/create','AgendaController@create')->name('admin.agenda.create');
+Route::post('/agenda/cadastra', 'AgendaController@cadastra')->name('admin.agenda.cadastra');

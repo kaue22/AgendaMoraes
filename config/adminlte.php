@@ -200,7 +200,7 @@ return [
 
     'password_email_url' => 'password/email',
 
-    'profile_url' => true,
+    'profile_url' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -231,10 +231,15 @@ return [
     */
 
     'menu' => [
-        ['header' => 'account_settings'],
+        
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Home',
+            'url'  => '/home',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Agenda',
+            'url'  => '/agenda',
             'icon' => 'fas fa-fw fa-user',
         ],
        
