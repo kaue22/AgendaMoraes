@@ -15,6 +15,9 @@ class Agenda extends Model
         return $this->belongsTo(User::class);
     }
 
+
+  
+
     /* public function search($filter = null)
     {
 

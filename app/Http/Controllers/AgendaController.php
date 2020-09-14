@@ -9,6 +9,7 @@ use App\Agenda;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class AgendaController extends Controller
 {
@@ -29,21 +30,23 @@ class AgendaController extends Controller
     {
         $idAuth = Auth::user()->id;
         // dd($this->repository->name);
-        $user_id = Agenda::where('user_id', $idAuth);
-        // dd($user_id);
-        
-        dd($user_id);
-        if ($user_id == $idAuth) {
-            $mostra = $this->repository->latest()->paginate(10);
+        //$user_id = Agenda::where('user_id', $idAuth);
 
-            return view(
-                'admin.agenda.home',
-                ['mostra' => $mostra,]
-            );
-        } else {
-            return view('/');
-        }
+        $user_id = DB::select('select * from agendas where user_id = ?', [$idAuth]);
+        //dd(Auth::user()->id);
+
+        dd($user_id);
+        if(Auth::user()->id == $user_id){
+        $mostra = $this->repository->latest()->paginate(10);
+        
+        return view(
+            'admin.agenda.home',
+            ['mostra' => $mostra,]
+        );
     }
+        return view('admin.pages.home');
+    }
+
 
     /**
      * Show the form for creating a new resource.
