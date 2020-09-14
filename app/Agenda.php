@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
 
+namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Agenda extends Model
 {
-    protected $fillable = ['name', 'phone', 'state', 'city','categoria'];
-
+    protected $fillable = ['name', 'phone', 'estado', 'cidade','info','categoria'];
+    
 
    /* public function search($filter = null)
     {

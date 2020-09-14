@@ -3,7 +3,7 @@
 @section('title', 'Detalhes do plano ')
 
 @section('content_header')
-    <h1>Detalhes do plano <b>{{ $plan->name }}</b></a></h1>
+    <h1>Agenda</a></h1>
 @stop
 
 @section('content')
@@ -12,20 +12,10 @@
         <div class="card-header">
             <ul>
                 <li>
-                    <strong>Nome: </strong>{{ $plan->name }}
+                    <strong>Nome: </strong>{{ $teste->name }}
                 </li>
 
-                <li>
-                    <strong>URL: </strong>{{ $plan->url }}
-                </li>
-
-                <li>
-                    <strong>Preço: </strong> R$ {{ number_format($plan->price, 2, ',', '.') }}
-                </li>
-
-                <li>
-                    <strong>Descrição: </strong>{{ $plan->description }}
-                </li>
+              
             </ul>
 
             <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">

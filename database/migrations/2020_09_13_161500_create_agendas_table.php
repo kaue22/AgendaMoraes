@@ -17,10 +17,11 @@ class CreateAgendasTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('phone');
-            $table->string('state');
-            $table->string('city');
+            $table->string('estado');
+            $table->string('cidade');
             $table->string('info');
             $table->string('categoria');
+            
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Http;
 use App\Agenda;
+use Illuminate\Support\Str;
 
 class AgendaController extends Controller
 {
@@ -18,6 +19,8 @@ class AgendaController extends Controller
     public function __construct(Agenda $agenda)
     {
         $this->middleware('auth');
+
+ 
         $this->repository = $agenda;
     }
 
@@ -35,38 +38,27 @@ class AgendaController extends Controller
      */
     public function create(Request $request)
     {
-
-        /* $response = Http::get('https://servicodados.ibge.gov.br/api/v1/localidades/estados');
-        $states = $response->json();
-*/
-        return view(
-            'admin.agenda.create'
-        );
+        return view('admin.agenda.create');
     }
 
     public function cadastra(Request $request)
     {
         $data = $request->all();
 
-        echo ("Data");
-        var_dump($data);
-        die();
-        // $data['url'] = Str::kebab($request->name);
+       
+        $data['url'] = Str::kebab($request->name);
+        
+       
         $this->repository->create($data);
+        //dd($data);
 
         return redirect()->route('admin.agenda.index');
     }
 
     public function show($url)
     {
-        $plan = $this->repository->where('url', $url)->first();
-
-        if (!$plan) {
-            return redirect()->back();
-        }
-
-        return view('admin.agenda.show', [
-            'plan' => $plan,
-        ]);
+        $teste = $this->repository->where('url', $url)->first();
+        dd($teste);
+        return view('admin.agenda.show',['teste'=>$teste]);
     }
 }

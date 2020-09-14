@@ -37,7 +37,7 @@
                     <label>Cidade:</label>
                     <select name="cidade" class="form-control">
             
-                        <option value=select[name='cidade']>select[name='cidade']</option>
+                        <option value=select[name='cidade']>Cidade</option>
                     </select>
                 </div>
 
