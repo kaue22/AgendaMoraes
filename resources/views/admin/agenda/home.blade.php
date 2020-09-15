@@ -25,7 +25,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Preço</th>
+                        <th>Telefone</th>
                         <th>Estado</th>
                         <th>Cidade</th>
                         <th>Informação</th>
@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($mostra as $agenda)
+                    @foreach ($mostra ?? '' as $agenda)
                         <tr>
                             <td>
                                 {{ $agenda->name }}
@@ -54,11 +54,13 @@
                                 {{ $agenda->categoria }}
                             </td>
                         </tr>
+                        
                     @endforeach
 
                 </tbody>
+                
             </table>
+            
         </div>
-     
-    </div>
+   
 @stop

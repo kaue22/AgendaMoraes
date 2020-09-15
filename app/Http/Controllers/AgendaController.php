@@ -33,18 +33,25 @@ class AgendaController extends Controller
         //$user_id = Agenda::where('user_id', $idAuth);
 
         $user_id = DB::select('select user_id from agendas where user_id = ?', [$idAuth]);
-        //dd(Auth::user()->id);
-
-        dd($user_id);
-        if(Auth::user()->id == $user_id){
-        $mostra = $this->repository->latest()->paginate(10);
         
+        foreach ($user_id as $key => $value){
+            $id=$value->user_id;
+        }
+        
+        //$mostra = $this->repository->latest()->paginate(10);
+        
+        if(Auth::user()->id == $id){
+        //$mostra = $this->repository->latest()->paginate(10);
+        $mostra = DB::select('select * from agendas where user_id = ?', [$idAuth]);
+       // dd($mostra);
         return view(
             'admin.agenda.home',
             ['mostra' => $mostra,]
         );
+
+        
     }
-        return view('admin.pages.home');
+    return view('admin.agenda.create');
     }
 
 
@@ -68,30 +75,23 @@ class AgendaController extends Controller
         $data['user_id'] = $user_id;
         //  dd($data);
 
-
-
         $this->repository->create($data);
 
 
-        return redirect()->route('admin.agenda.show');
+        return redirect()->route('admin.agenda.home');
     }
 
-    /*  public function show($user_id)
-    {
-        $teste = $this->repository->where('nome', $user_id)->first();
-        //dd($teste);
-        return view('admin.agenda.show', ['teste' => $teste]);
-    }
-*/
+  
 
-    public function destroy($user_agenda_id)
+
+    public function destroy($user_id)
     {
-        $teste = $this->repository->where('user_agenda_id', $user_agenda_id)->first();
-        dd($teste);
-        /*if (!$plan)
+        $teste = $this->repository->where('id', $id)->first();
+       //dd($teste);
+        if (!$teste)
             return redirect()->back();
 
-        $plan->delete();*/
-        return redirect()->route('plans.index');
+        $teste->delete();
+        return redirect()->route('admin.agenda.home');
     }
 }

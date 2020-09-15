@@ -10,15 +10,14 @@
 
 @section('content')
 <body>
-        Ola,<p></p>
-        Bem vindo a sua Agenda! <br/>###AQUI RETORNAR O NUMERO DE LISTAS NA AGENDA### <br/>
+        Ola,<h3>{{auth()->user()->name}}</h3>
+        Bem vindo a sua Agenda! <br/><br/>
 
 
-
-
-
-LISTA DE ULTIMA AGENDA
-
+        <figure>
+  <img src="https://img.elo7.com.br/product/zoom/2979F29/agenda-2020-dois-dias-por-pagina-arquivo-digital-agenda-2020.jpg" alt="Agenda">	
+ 
+</figure>
 </body>
 @stop
 
