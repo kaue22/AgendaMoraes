@@ -29,21 +29,17 @@ class AgendaController extends Controller
     public function index()
     {
         $idAuth = Auth::user()->id;
-        // dd($this->repository->name);
-        //$user_id = Agenda::where('user_id', $idAuth);
-
-        $user_id = DB::select('select user_id from agendas where user_id = ?', [$idAuth]);
         
+        $user_id = DB::select('select user_id from agendas where user_id = ?', [$idAuth]);
+        if($user_id){
         foreach ($user_id as $key => $value){
             $id=$value->user_id;
         }
         
-        //$mostra = $this->repository->latest()->paginate(10);
-        
         if(Auth::user()->id == $id){
-        //$mostra = $this->repository->latest()->paginate(10);
+      
         $mostra = DB::select('select * from agendas where user_id = ?', [$idAuth]);
-       // dd($mostra);
+      
         return view(
             'admin.agenda.home',
             ['mostra' => $mostra,]
@@ -51,6 +47,7 @@ class AgendaController extends Controller
 
         
     }
+}
     return view('admin.agenda.create');
     }
 
@@ -73,8 +70,7 @@ class AgendaController extends Controller
         }
         $data = $request->all();
         $data['user_id'] = $user_id;
-        //  dd($data);
-
+       
         $this->repository->create($data);
 
 

@@ -14,10 +14,9 @@
         <div class="card-header">
            
                 @csrf
-                <input type="text" name="filter" placeholder="nome" class="form-control" value={{ $filters['filter'] ?? '' }}>
-                <button type="submit" class="btn btn-dark">Filtrar</button>
+               
 
-            </form>
+            
         </div>
 
         <div class="card-body">
